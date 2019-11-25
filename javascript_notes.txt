@@ -1,0 +1,329 @@
+== : its okay if datatype do not match only value should match (it does type coercion)
+=== : datatype and value both should match
+
+falsy values: undefined, null, 0, NaN, '' (are all considered as false)
+expression : anything that gives a value is an expression.
+--> function expression produce immediate results but function declaration does not produce immediate results.
+
+******************
+* Let and Const
+******************
+
+-> Unlike var variables declared as let are block scoped. They can't be accessed outside it.
+-> Variables declared as const can't be changed once declared.
+
+
+******************
+* Array methods
+******************
+
+-> let test be an array
+1) test.push('aman')                    //adds an element at the end of array
+2) test.unshift('mr')                   //adds an element at beginning of array
+3) test.pop()                           //pops the last element from the array
+4) test.shift()                         //pops the first element of the array
+5) test.sort()                          //returns a sorted array
+6) test.indexOf('aman')                 //gives the index of the element 'aman' in array.
+                                        if element is not present in array then it returns -1.
+7) test.splice(position, howmany)       //position: from where to start deleting
+                                        howmany: number of elements to be deleted from position.
+                                        it will return the deleted ones and mutates/change the original array.
+8) test.slice(startindex, endindex)     //it will return the deleted elements but does not
+                                        mutate the original array.
+
+9) ages = [10,12,55,8,1]
+console.log(ages.findIndex(cur => cur >= 16));          //2     returns the index
+Finds the index of current element where current is >= 16.
+
+console.log(ages.find(cur => cur >= 16));               //55    returns the value
+Finds thr current element where current is >= 16.
+
+
+
+*******************
+* Javascript BTS
+*******************
+
+-> The parser firsts makes a sytnax tree from the code. Then it is converted to machine code and this way code runs finally.
+
+* Execution context:
+1) It is a box, a container or a wrapper which stores the variables and in which piece of our code is evaluated or executed.
+
+* Global Execution context:
+1) Code that is not inside any function is in global execution context
+2) It can be associated with the global object or say window object in browser. (can be accessed through window.var_name etc)
+i.e lastName == window.lastName //it is equal.
+
+* Code inside function
+1) A new function when called gets its very own new execution context
+2) When a function is returned its execution context pops off from the top of stack
+
+
+
+--> Hoisting
+Because of hoisting a function can be called before the function declaration. But a function expression cannot be called before it is declared. This is because the function declaration is defined in the creation phase only and saved in variable object pointing to the function. Same with the variables that all varibles are set to undefined in creation phase and saved it to variable object. This both are then processed in execution phase.
+
+
+
+****************************
+* DOM Manipulation Objects
+****************************
+
+
+document.querySelector('.classname' or '#idname').textContent = textuwant;
+document.querySelector('.classname' or '#idname').innerHTMl = 'html code';
+document.getElementById('idname').textContent = textuwant;
+
+--> To change CSS
+document.querySelector('.classname' or '#idname').style.cssproperty = 'propertyvalue';
+
+--> To access HTML element
+<img src="dice-5.png" alt="Dice" class="dice">
+document.querySelector('.dice').src = 'whatuwant';
+
+
+
+
+************************
+* Bind, Call and Apply
+************************
+
+var john = {
+    name: 'John Doe',
+    age: 26,
+    job: 'Designer',
+    presentation: function(style, timeOfDay){
+        if (style==='formal') {
+            console.log('Good '+timeOfDay+' Ladies and Gentleman! I\'m '+this.name+'. I\'m '+this.age+ ' years old. I work as a '+this.job);
+        } else if (style==='friendly') {
+            console.log('Hey! What\'s up? This is '+this.name+ ' with you. I\'m '+this.age+ ' years old. I work as a '+this.job);
+        }
+    }
+}
+
+console.log(john);
+john.presentation('formal','morning');
+
+var emily = {
+    name: 'Emily',
+    age: 24,
+    job: 'Actor'
+};
+
+//call method
+//here the first parameter sets the this variable for the object.
+john.presentation.call(emily,'friendly','morning');
+
+//apply method
+//used when the parameter is sent as an array of arguments.
+john.presentation.apply(emily,['friendly','morning']);
+
+//bind method
+//it returns a function and used generally to set default arguments
+var johnFriendly = john.presentation.bind(john,'formal');
+
+johnFriendly('morning');
+johnFriendly('afternoon');
+
+
+
+
+
+***************************
+* Convert list to an array
+***************************
+
+fields - list
+fieldsArr - array
+
+ES-5
+fieldsArr = Array.prototype.slice.call(fields);
+
+ES-6
+fieldsArr = Array.from(fields);
+
+Hence fields list is converted and copied to array fieldsArr
+
+
+
+
+*****************************
+* String Manupulations
+*****************************
+
+parseFloat(string); //convert string to float
+parseInt(string);   //convert string to int
+string.split(',')   //split string at each comma encountered
+string.substr(Numberfrom, Numberlength)
+string.substr(2,5)  //returns substring starting from index 2 and grabs 5 elements
+
+//ES6
+const s = 'aman chaudhary'
+console.log(s.startWith('a'));      //true
+console.log(s.endsWith('ry'));      //true
+console.log(s.includes('c'));        //true
+console.log(s.startsWith('A'));     //false
+
+***********
+* Map
+***********
+
+Map is same as forEach. The only difference is the values returned by map is pushed in an array.
+e.g
+var el = [1,2,3];
+var arr = el.map(function(current){
+    return current*2;
+});
+
+//arr = [2,4,6];
+
+
+
+***********************
+* Number Manipulations
+***********************
+
+var num = -500.2555;
+Math.abs(num) //500.2555
+
+var num = 500.2555;
+num.toFixed(2)  //"500.26"
+
+var num = 500.2555
+Math.round(num) //500
+
+var num = 16;
+Math.sqrt(num); //4
+
+
+
+********************
+* Arrow Functions
+********************
+
+const years = [1999,1991,1987,1997];
+
+let ages = years.map(cur => 2019-cur);
+console.log(ages);  //[20,28,32,22]
+
+ages = years.map((cur,index) => 2019-cur-index);
+console.log(ages);  //[20,27,30,19]
+
+ages = years.map((cur,index) => `age is ${2019 - cur} and index is ${index +1 }`);
+console.log(ages);
+//["age is 20 and index is 1", "age is 28 and index is 2", "age is 32 and index is 3", "age is 22 and index is 4"]
+
+ages = years.map((cur,index) => {
+    const now = new Date().getFullYear();
+    const age = now - cur;
+    return age;
+});
+console.log(ages);  //[20, 28, 32, 22]
+
+
+
+*******************
+* Spread Operator
+*******************
+--> Used in function call
+
+let sum = function(a,b,c){
+    return a+b+c;
+}
+
+const arr1 = [1,2,3];
+const arr2 = [6,5,8];
+
+let v1 = sum(...arr1);
+console.log(v1);    //6
+
+let arr3 = [...arr1,2,...arr2];
+console.log(arr3);  //[1, 2, 3, 2, 6, 5, 8]
+
+
+
+********************
+* Rest Parameters
+********************
+--> To take random number of arguments
+--> Used in function declaration
+
+function isFullAge(limit, ...years){
+    years.forEach(cur => console.log((2016-cur) >= limit));
+}
+
+isFullAge(16,1990, 1999, 2005, 1991);
+
+
+
+
+
+*******************
+* Classes in ES6
+*******************
+
+
+class Person {
+    //class constructor
+    constructor(name,yearOfBirth,gender){
+        this.yearOfBirth = yearOfBirth;
+        this.name = name;
+        this.gender = gender;
+    }
+
+    //class method
+    calculateAge(){
+        let age = new Date().getFullYear() - this.yearOfBirth;
+        console.log(age);
+    }
+
+    //static class method
+    static greeting(){
+        console.log('Hey there!');
+    }
+}
+
+let obj = new Person('Aman',1999,'Male');
+obj.calculateAge();     //20
+Person.greeting();      //'Hey there!'
+
+
+
+
+***********************
+* Inheritance in ES6
+***********************
+
+
+class Person {
+    constructor(name, yearOfBirth, gender){
+        this.yearOfBirth = yearOfBirth;
+        this.name = name;
+        this.gender = gender;
+    }
+    calculateAge(){
+        let age = new Date().getFullYear() - this.yearOfBirth;
+        console.log(age);
+    }
+}
+
+//class Athlete inherits class Person
+class Athlete extends Person{
+
+    //constructor of class Athlete
+    constructor(name, yearOfBirth, gender, olyGame, olyMedals){
+
+        //constructor of class parent class Person is called and params are set
+        super(name, yearOfBirth, gender);
+
+        this.olyGame = olyGame;
+        this.olyMedals = olyMedals;
+    }
+    wonMedal(){
+        this.olyMedals++;
+    }
+}
+
+let athlete1 = new Athlete('Usain Bolt', 1987, 'M', 'Running', 9);
+athlete1.calculateAge();
+athlete1.wonMedal();

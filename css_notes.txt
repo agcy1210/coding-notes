@@ -1,0 +1,28 @@
+********************
+* Display types
+********************
+
+-> display:block
+
+Takes up the full width available, with a new line before and after (display:block;)
+
+-> display:inline
+
+Takes up only as much width as it needs, and does not force new lines (display:inline;)
+
+span default styling is display:inline block :span does not start on a new line and only takes up as much width as necessary
+
+-> display: inline-block
+An inline block is placed inline (ie. on the same line as adjacent content), but it behaves as a block.
+The real use of this value is when you want to give an inline element a width. In some circumstances some browsers don't allow a width on a real inline element, but if you switch to display: inline-block you are allowed to set a width.
+
+
+
+*****************
+* Form Styling
+*****************
+
+here form__input and form__label are siblings of each other. Hence + is used to select the adjacent sibling. Should be wrtitten in this order only. If some elements are there in between the the two elements to be selected then '~' is used instead of '+'
+&__input:placeholder-shown + &__label {
+
+}

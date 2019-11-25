@@ -1,0 +1,14 @@
+1) To create a project
+flutter create <project_name>
+
+Then go into the project directory
+cd <project_name>
+
+2) To check android device running or not
+flutter devices
+
+3) To run the flutter app
+flutter run -v
+or
+flutter run
+

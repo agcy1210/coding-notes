@@ -1,0 +1,13 @@
+npm init    (for setting up package.json)
+
+//if sass is needed then run next command else ignore
+npm install node-sass --save-dev    (--save-dev for developer package
+                                     -- save for project package)
+->write the following script for sass in package.json
+"compile:sass": "node-sass scss_file_location(input file) css_file_location(output file)"
+->In terminal run following:
+npm run compile:sass
+
+
+//if node_modules folder is not there then just run this command to get all dependencies
+npm install     (this will fetch dependencies from package.json)

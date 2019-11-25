@@ -1,0 +1,66 @@
+1) To uninstall an app:
+$sudo apt-get --purge autoremove packagename
+
+2) To resolve dns:
+$sudo /etc/resolv.conf
+And then change the nameserver ip's by removing the original ones
+nameserver 8.8.8.8
+nameserver 8.8.8.4
+
+
+3) To find the location of java
+$readlink -f $(which java)
+
+4) To unset env variable
+$unset JAVA_HOME
+
+flutter clean
+5) Flutter run projects by going into the app directory
+$flutter run -v
+
+6)To list all the installed packages.
+$ dpkg --list
+
+7)To completely remove the package you want, type:
+$ sudo apt-get purge <package_name>
+
+8) To get a list of ALL packages
+$ apt-cache search .
+
+9) To start postgres
+sudo -i -u postgres
+
+10) To start pgadmin
+Go to pgadmin env and activate it 
+then run this command
+$ python3 lib/python3.6/site-packages/pgadmin4/pgAdmin4.py
+master password: aman1234
+
+
+Apache Webserver commands
+
+1) To stop your web server, type:
+$ sudo systemctl stop apache2
+
+2) To start the web server when it is stopped, type:
+$ sudo systemctl start apache2
+
+3) To stop and then start the service again, type:
+$ sudo systemctl restart apache2
+
+4) If you are simply making configuration changes, Apache can often reload without dropping connections. To do this, use this command:
+$ sudo systemctl reload apache2
+
+5) By default, Apache is configured to start automatically when the server boots. If this is not what you want, disable this behavior by typing:
+$ sudo systemctl disable apache2
+
+6) To re-enable the service to start up at boot, type:
+$ sudo systemctl enable apache2
+
+Apache should now start automatically when the server boots again.
+
+
+
+
+
+
