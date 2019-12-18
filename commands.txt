@@ -19,7 +19,6 @@ flutter clean
 $flutter run -v
 
 6)To list all the installed packages.
-$ dpkg --list
 
 7)To completely remove the package you want, type:
 $ sudo apt-get purge <package_name>
@@ -62,5 +61,5 @@ Apache should now start automatically when the server boots again.
 
 
 
-
+Dksarkar@+-
 
