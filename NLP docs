@@ -1,0 +1,153 @@
+Natural Language Processing - NLP is a field in machine learning with the ability of a computer 
+                              to understand, analyze, manipulate, and potentially generate human language.
+
+Important steps in NLP
+
+1) Tokenization : is the process of dividing the string in various tokens which are basically small units.
+eg: "Tokenization is the first step in the NLP"
+
+after tokeniztion:
+['Tokenization', 'is', 'the', 'first step in the NLP']
+
+2) Stemming : Normalize words in their base or root forms.
+
+eg: affects, affection, affected, affecting ...
+
+after Stemming:
+affect
+
+3) Lemmatization: Same as stemming but gives a proper word
+
+eg: going, went, gone
+
+after Lemmatization:
+go
+
+-> But this would not be the output in case of stemming as it just removes the prefix or suffix etc for getting the root word.
+
+4) POS tags
+
+
+5) Named Entity Recognition (NER):
+Noun Phrase Identification
+Phrase Classification
+Entity Disambiguation
+
+eg: Google's CEO Sundar Pichai just pixel3 at the new york central mall
+
+After NER:
+Google identified as organization
+Sundar Pichai -> Person
+New York -> Location
+Central Mall -> organization
+
+6) Chunking : taking all the info from the previous steps and group them together to form a meaning
+
+
+
+                                                ************************
+                                                   NLP Steps - Medium
+                                                ************************
+
+
+Text = London is the capital and most populous city of England and the United Kingdom. Standing on the River Thames in the south east of the island of Great Britain, London has been a major settlement for two millennia. It was founded by the Romans, who named it Londinium.
+
+
+Steps for NLP:
+
+*
+1) Sentence segmentation: Break the text apart in to several segments
+
+This gives us:
+
+->“London is the capital and most populous city of England and the United Kingdom.”
+-“Standing on the River Thames in the south east of the island of Great Britain, London has been a major settlement for two millennia.”
+->“It was founded by the Romans, who named it Londinium.”
+
+*
+2) Word Tokenization: Break each sentence into separate words or tokens
+
+This gives us:
+
+“London”, “is”, “ the”, “capital”, “and”, “most”, “populous”, “city”, “of”, “England”, “and”, “the”, “United”, “Kingdom”, “.”
+
+*
+3) Predicting the part of speech of each token: whether it is Noun , pronoun , adjective etc
+
+This gives us:
+London: - Proper Noun
+is: verb
+the: determiner
+capital: Noun
+and : conjuction
+most : adjective
+populous: adjective
+...and so on
+
+*
+4)Text Lemmatization: figuring the most basic type form or lemma of each word in the sentence
+
+London: - Proper Noun
+is: ->  be  - verb
+the: determiner
+capital: Noun
+and : conjuction
+most : adverb
+populous: adjective
+
+Here only is changes.
+for eg the Lemmatization will convert two words ponies and pony to pony
+
+*
+5) Identifying the stop words:
+
+“London”, “is(be)”, “ the”, “capital”, “and”, “most”, “populous”,....
+
+Here is, the and are the stop words. This are removed before any processing as it produces lot of noise in the sentence
+
+
+*
+6) Dependency Parsing: Figure how all the words in our sentence relate to each other
+
+*
+6 -b ) Finding noun phrases: Group together the words that represent single idea or thing
+London: Proper Noun
+is - (be) - verb
+the capital - Noun
+and - conjuction
+most populous city - Noun
+
+demo link: https://explosion.ai/demos/displacy
+
+*
+7) Named entity recognition: detect and label nouns with real world conepts they represent
+
+This gives us:
+
+London - Geographic entity
+England - Geographic entity
+United kingdom - Geographic entity
+
+demo link: https://explosion.ai/demos/displacy-ent
+
+*
+8) Co reference Resolution: it relates the pronouns like he,she,it to its noun which it is referring
+
+text = London is the capital of england. It was founded by the Romans
+
+This relates London with it.
+
+demo link: https://huggingface.co/coref/
+
+
+
+                                                *****************************
+                                                    NLP Processing pipeline
+                                                *****************************
+
+
+input - text document -> Sentence segmentation -> tokeniztion -> parts of speech tagging -> Lemmatization -> stop words -> Dependency Parsing
+ -> Noun Phrases -> Named entity recognition -> co-reference resolution -> data structures representing parsed text - output
+
+
+
