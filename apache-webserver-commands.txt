@@ -1,0 +1,21 @@
+Apache Webserver commands
+
+1) To stop your web server, type:
+$ sudo systemctl stop apache2
+
+2) To start the web server when it is stopped, type:
+$ sudo systemctl start apache2
+
+3) To stop and then start the service again, type:
+$ sudo systemctl restart apache2
+
+4) If you are simply making configuration changes, Apache can often reload without dropping connections. To do this, use this command:
+$ sudo systemctl reload apache2
+
+5) By default, Apache is configured to start automatically when the server boots. If this is not what you want, disable this behavior by typing:
+$ sudo systemctl disable apache2
+
+6) To re-enable the service to start up at boot, type:
+$ sudo systemctl enable apache2
+
+Apache should now start automatically when the server boots again.
