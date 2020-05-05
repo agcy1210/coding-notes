@@ -12,7 +12,7 @@ now, s1 = "ma"
 char c[] = new char[10];
 String s = "aman";
 s.getChars(start_index,end_index,target_arr,target_arr_start_index)
-s.getchars(0,s.length(),c,0)
+s.getChars(0,s.length(),c,0)
 now, c = {'a','m','a','n'}
 
 

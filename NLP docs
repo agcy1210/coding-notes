@@ -129,6 +129,7 @@ England - Geographic entity
 United kingdom - Geographic entity
 
 demo link: https://explosion.ai/demos/displacy-ent
+link for code list: https://spacy.io/api/annotation#named-entities
 
 *
 8) Co reference Resolution: it relates the pronouns like he,she,it to its noun which it is referring
