@@ -12,3 +12,25 @@ flutter run -v
 or
 flutter run
 
+*
+.builder method
+
+- it renders only those items which are on the screen and not rendering items not on the screen, 
+    hence it improves the performance.
+- eg: GridView.builder(), ListView.builder()
+
+*
+const
+
+- when used before a property it means it doesn't rebuild when build method is called,
+    to increase the performance.
+- eg: padding: const EdgeInsets.all(10.0)
+
+* 
+crossAxis and mainAxis
+
+- crossAxis means space between columns
+- mainAxis means space between rows
+
+*
+
