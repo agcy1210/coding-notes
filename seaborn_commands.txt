@@ -1,0 +1,31 @@
+1) LINE charts
+
+sns.lineplot(data=data,label=label)
+
+2) BAR charts
+
+sns.barplot(x=data.index,y=data[p])
+
+3) HEAT map
+
+sns.heatmap(data=data, annot=True)
+
+4) SCATTER plot
+
+sns.scatterplot(x=data[a], y=data[b])
+
+To get a scatter plot with regression line fitted
+
+sns.regplot(x=data[a], y=data[b])
+
+5) Colour coded scatter plots
+
+sns.scatterplot(x=insurance_data['bmi'], y=insurance_data['charges'], hue=insurance_data['smoker'])
+
+To fit two regression lines
+
+sns.lmplot(x="bmi", y="charges", hue="smoker", data=insurance_data)
+
+6) Categorical Scatter plot
+
+sns.swarmplot(x=insurance_data['smoker'], y=insurance_data['charges'])

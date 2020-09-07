@@ -1,0 +1,55 @@
+0) Lengths
+-> Length of string: s.length();
+-> Length of array: arr.length;
+
+
+1) Sorting an array
+import java.util.Arrays;
+Arrays.sort(arr);
+
+2) Convert string to char array
+char[] arr = s.toCharArray();
+
+3) Convert char array to string
+String s = new String(arr);
+
+4) Compare equality of two strings a and b
+a.equals(b) -> returns true if equal else false
+
+5) Create a hashmap
+import java.utils.HashMap;
+HashMap<Integer, String> test = new HashMap<Integer, String>();
+
+
+Integer -> datatype of key
+String -> datatype of value
+
+-> To get a value
+test.get(key);
+
+-> To put a value
+test.put(key,value)
+
+-> To update a value
+if(test.containsKey(key)){
+    test.put(key, test.get(key) + 1);
+}
+
+-> To iterate over keys
+for(int k: test.keySet()){
+
+}
+
+-> To iterate over values
+for(String v: test.values()){
+
+}
+
+-> To iterate over key value pair
+for(Map.Entry<Integer, String> entry: map.entrySet()){
+    Integer key = entry.getKey();
+    String value = entry.getValue();
+}
+
+ex: 
+HashMap<Character, Integer> test = new HashMap<>();

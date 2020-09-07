@@ -21,3 +21,64 @@ $docker image rm image_name
 
 7) Pushing to docker repo
 $docker push agcy1210/first_app:latest
+
+
+
+
+
+
+
+Course notes
+0) To get all the commands available
+$ docker
+
+1) To get the information of the docker installed
+$ docker info
+
+2) To check all the running containers
+$ docker ps
+
+-> To get all the containers (running and stopped)
+$ docker ps -a
+
+--> To get only the last container that has just been stopped
+$ docker ps -l
+
+3) To check all the images in the system
+$ docker images
+
+4) To create a container
+$ docker run -ti reponame:tagname bash
+
+5) To create an image from a container
+$ docker commit container_name image_name_we_want
+
+Flow:
+images -> (4) ->running container -> exit ->stopped container -> (5) -> new images
+
+6) Run multiple commands
+$ docker run -ti reponame:tagname bash -c "sleep 5; echo all done"
+
+Starts a container bash sleeps for 5 seconds and then prints all done.
+
+7) Remove a container when exited directly
+$ docker run --rm -ti reponame:tagname bash
+
+8) To leave a container running in background - detach
+$ docker run -d --ti reponame:tagname bash
+
+9) To jump into any background running container - attach
+$ docker attach name_of_container/id_of_container
+
+10) To detach a container in which u r in rn
+ctrl+p -> ctrl+q
+
+11) To see what went wrong
+$ docker logs container_name/id
+
+12) Stop a container 
+$ docker kill container_name/id
+
+13) Remove a container
+$ docker rm container_name/id
+

@@ -1,0 +1,119 @@
+Basic setup commands
+
+1) Start the server
+$ brew services start mongodb-community
+
+2) Stop the server
+$ brew services stop mongodb-community
+
+3) To restart the server
+$ brew services restart mongodb-community
+
+3) Open shell
+$ mongo
+
+
+
+
+
+
+Notes
+
+1) $ mongoimport --collection population --file CA_DRU_proj_2010-2060.csv --type csv --headerline
+
+-> Imports a file named CA_DRU_proj_2010-2060.csv and populate it to a collection named population
+-> Here --type attribute is necessary as by default it assumes the file to be a json
+-> The --headerline attribute indicates that first line should be used as header names for columns
+
+2) $ db.population.count()
+-> Returns the number of rows in the collection population
+
+3) $ db.population.find()
+-> Returns the first 20 rows of the population collection
+
+$ db.population.find({"Gender":"Male", "Age":15})
+-> Returns first few rows where Gender = Male and Age = 15
+
+-> To give a constraint to a query we need to pass the json objects containing the query
+
+4) $ db.accidents.createIndex({Accident_Index:1})
+-> Creates an index for each row
+
+5) Combining two collections
+$ db.accidents.aggregate([{$lookup: {from: "vehicles", localField: "Accident_Index", foreignField: "Accident_Index", as: "Vehicles"}}, {$unwind: "$Vehicles"}, {$project: {Accident_Index: 1, Accident_Severity: 1, _id:0, Vehicle_Type: "$Vehicles.Vehicle_Type"}},{$out: "combined"}])
+
+6) Mapping values
+$ db.vehicle_type.find().forEach(function(obj) {db.combined.updateMany({Vehicle_Type: obj.code}, {$set: {Vehicle_Type: obj.label}})})
+
+7) $ db.combined.aggregate({ $group: {_id: "$Vehicle_Type" , total: {$sum: 1}} })
+-> Grouping the rows w.r.t "Vehicle_Type" 
+-> Calculating the total number of occurences of each Vehicle_Type 
+-> Naming the rows as _id and total in the result
+
+$ db.combined.aggregate({$match: {Vehicle_Type: /otorcy/}}, { $group: {_id: "$Vehicle_Type" , total: {$sum: 1}} })
+-> Returns only those which have otorcy as substring
+
+$ db.combined.aggregate({$match: {Vehicle_Type: /otorcy/}}, { $group: {_id: "$Vehicle_Type" , averageSeverity: {$avg: "$Accident_Severity"},total: {$sum: 1}} })
+-> Calculating the averageSeverity of each Vehcile_Type
+
+
+
+Aggregate:
+
+1) $ db.population.aggregate(
+    {$match: {"Year": 2014}}, 
+
+    {$project: {
+        Gender: 1, "County Name": 1, Population: 1}
+        }, 
+
+    {$sort: {
+        "County Name": -1}
+        }, 
+
+    {$group: {
+        _id: {
+        'County Name': '$County Name', 'Gender': '$Gender'}, 
+        Population: {
+            $sum: '$Population'}
+        }
+    })
+
+-> Gives the total number of male and female population of each county.
+
+o/p: { "_id" : { "County Name" : "Solano", "Gender" : "Male" }, "Population" : 211732 }
+    { "_id" : { "County Name" : "Solano", "Gender" : "Female" }, "Population" : 213698 }
+
+
+2) $ db.population.aggregate([
+    {$match: {"Year": 2014}},
+
+    {$project: {
+        'County Name': 1,
+        Female: {
+            $cond: [{$eq : ["$Gender", "Female"]}, "$Population", 0]
+        },
+        Male: {
+            $cond: [{$eq : ["$Gender", "Male"]}, "$Population", 0]
+        },
+    }},
+    {$group: {
+        _id: "$County Name", 
+        Female: {$sum: "$Female"},
+        Male: {$sum: "$Male"}
+        }
+    },
+    {$sort: {_id: 1}}]
+) 
+
+o/p : { "_id" : "Alameda", "Female" : 814288, "Male" : 785397 }
+
+
+
+***********
+    CRUD
+***********
+
+
+
+
