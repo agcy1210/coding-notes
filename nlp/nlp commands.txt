@@ -1,0 +1,40 @@
+//for token in doc
+
+Text: The original word text. 
+$ token.text
+
+Lemma: The base form of the word. 
+$ token.lemma_
+
+POS: The simple part-of-speech tag.
+$ token.pos_
+
+Tag: The detailed part-of-speech tag.
+$ token.tag_
+
+Dep: Syntactic dependency, i.e. the relation between tokens.
+$ toke.dep_
+
+Shape: The word shape – capitalization, punctuation, digits.
+$ token.shape_
+
+is alpha: Is the token an alpha character?
+$ token.is_alpha
+
+is stop: Is the token part of a stop list, i.e. the most common words of the language?
+$ token.is_stop
+
+
+//ner
+//for ent in doc.ents
+Text: The original entity text.
+$ ent.text
+
+Start: Index of start of entity in the Doc.
+$ ent.start_char
+
+End: Index of end of entity in the Doc.
+$ ent.end_char
+
+Label: Entity label, i.e. type.
+$ ent.label_

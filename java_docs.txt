@@ -14,12 +14,12 @@ char[] arr = s.toCharArray();
 String s = new String(arr);
 
 4) Compare equality of two strings a and b
-a.equals(b) -> returns true if equal else false
+a.equals(b) -> returns true if equal, else false
 
-5) Create a hashmap
-import java.utils.HashMap;
+5) HashMap
+-> Create a hashmap
+
 HashMap<Integer, String> test = new HashMap<Integer, String>();
-
 
 Integer -> datatype of key
 String -> datatype of value
@@ -30,7 +30,7 @@ test.get(key);
 -> To put a value
 test.put(key,value)
 
--> To update a value
+-> To increment a value
 if(test.containsKey(key)){
     test.put(key, test.get(key) + 1);
 }
@@ -53,3 +53,102 @@ for(Map.Entry<Integer, String> entry: map.entrySet()){
 
 ex: 
 HashMap<Character, Integer> test = new HashMap<>();
+
+6) Hashset
+
+-> Creating a hashset
+HashSet<String> set = new HashSet<>();
+
+-> Adding an element
+set.add("aman");
+
+-> Check if item exists
+set.contains("aman");  #true
+
+-> Remove an item
+set.remove("aman");
+
+-> Removing all items
+set.clear()
+
+-> Size of hashset
+set.size();
+
+-> Loop through hashset
+for(String i: cars){
+    System.out.println(i);
+}
+
+7) I/O
+
+import java.util.*;
+
+public class Sample {
+  public static void main(String[] args) {
+    Scanner inp = new Scanner(System.in);
+    // String s = inp.nextLine();
+    // int i = inp.nextInt();
+    // System.out.println(s);
+
+    #accepting an array of inputs
+    // int n = inp.nextInt();
+    // int arr[] = new int[n];
+    // for(int i=0; i<n; i++) arr[i] = inp.nextInt();
+    // for(int i: arr) System.out.println(i);
+
+    
+    // System.out.println(inp.next());
+    // System.out.println(inp.next());
+    // System.out.println(inp.next());
+
+
+    System.out.println("End");
+    inp.close();
+  }
+}
+
+8) Typecasting
+
+-> double to int
+
+double p = 20.8;
+int a = (int) p; #20
+
+-> int to double
+
+int p = 28;
+double a = p; #28.0
+
+-> String to int
+
+String str = "1234";
+int num = Integer.parseInt(str);
+
+
+9) ArrayList
+Difference between arraylist and array is that in arraylist size of array can be modified
+while in array size is fixed.
+
+-> Creating an ArrayList
+ArrayList<String> arr = new ArrayList<>();
+
+-> Adding an element
+arr.add("aman");
+
+-> Accessing an item
+arr.get(index);
+arr.get(0); #aman
+
+-> Modifying an element
+arr.set(index, newval);
+arr.set(0, "ayushi");
+
+-> Removing an element
+arr.remove(index)
+arr.remove(0);
+
+-> Size
+arr.size();
+
+-> Sorting
+Collections.sort(arr);
