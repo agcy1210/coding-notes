@@ -152,3 +152,12 @@ arr.size();
 
 -> Sorting
 Collections.sort(arr);
+
+
+10) Integer class:
+
+Integer.MAX_VALUE => gives max value of Integer
+Integer.MIN_VALUE => gives min value of Integer
+
+Integer.parseInt(str) => convert string to Integer
+
