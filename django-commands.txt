@@ -2,7 +2,7 @@
 
 #creating a virtual environment
 1) Run following command to create a virtual environment
-$python3 -m venv ./venv		#venv is name of virtual environment.You can set whatever you wants
+$python3 -m venv ./venv		#venv is name of virtual environment.You can set whatever you wants.
 2) Run following command to use virtual environment
 $source ./venv/bin/activate
 3) To close virtual environment
@@ -23,7 +23,7 @@ $python3 manage.py createsuperuser
 
 To create a app and view:
 
-####creating app
+####creating app:
 ->run following command:
 $$python3 manage.py startapp {appname}
 1) Go to settings.py and add your app in Installed apps
@@ -31,7 +31,7 @@ $$python3 manage.py startapp {appname}
 only 1st time --> In your app's directory create a folder urls.py and set up that like previous app's urls.py
 
 
-####creating view
+####creating view:
 optional -> If want to create template then create one
 3) Create that view in views.py of your app
 4) Go to urls.py of your app & insert that path of the view in urlpattern
@@ -51,7 +51,7 @@ $python3 manage.py migrate
 4) Register the models in app's admin.py to show them on admin page
 -->$sqlitebrowser	#To open the sqlitebrowser
 
-#to reset all migrations
+#to reset all migrations:
 $python manage.py migrate --fake myappname zero
 
 #for inserting media files:
